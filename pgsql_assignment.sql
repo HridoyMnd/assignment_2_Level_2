@@ -134,3 +134,17 @@ SELECT ranger_name, count(*) as sight_count
     ON rangers.ranger_id = sightings.ranger_id  
     GROUP BY ranger_name 
 
+
+-- Problem_5 solution
+SELECT common_name FROM species
+    WHERE species_id
+    NOT IN (SELECT DISTINCT species_id
+    FROM sightings)
+
+
+-- Problem_6 solution
+SELECT common_name, sighting_time FROM sightings
+    INNER JOIN species
+    ON sightings.species_id = species.species_id
+    ORDER BY sighting_time DESC
+    LIMIT 2
