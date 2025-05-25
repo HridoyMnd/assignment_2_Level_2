@@ -58,3 +58,40 @@ INSERT INTO species (common_name, scientific_name, discovery_date, conservation_
 ('Sloth Bear', 'Melursus ursinus', '1791-01-01', 'Vulnerable'),
 ('Indian Peacock', 'Pavo cristatus', '1758-01-01', 'Endangered'),
 ('Great Indian Bustard', 'Ardeotis nigriceps', '1863-01-01', 'Endangered')
+
+
+-- create sightings table
+CREATE TABLE sightings (
+    sighting_id SERIAL PRIMARY KEY,
+    species_id INT,
+    ranger_id INT,
+    location VARCHAR (100),
+    sighting_time DATE,
+    notes TEXT,
+    Foreign Key (species_id) REFERENCES species (species_id),
+    Foreign Key (ranger_id ) REFERENCES rangers (ranger_id)
+);
+
+
+-- Provided data insert into sightings
+INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VALUES
+(1, 1, 'Peak Ridge', '2024-05-10 07:45:00', 'Camera trap image captured'),
+(2, 2, 'Bankwood Area', '2024-05-12 16:20:00', 'Juvenile seen'),
+(3, 3, 'Banboo Grove East', '2024-05-15 09:10:00', 'Feegin observed'),
+(1, 2, 'Snofall Pass', '2024-05-18 18:30:00', NULL)
+
+
+-- extra data insert into sightings
+INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VALUES
+(4, 4, 'Gir Forest', '2025-05-13', 'A single Asiatic lion resting.'),
+(5, 2, 'Jim Corbett Pass', '2025-05-14', 'Leopard crossed the trail path.'),
+(1, 5, 'Sundarbans', '2025-05-15', 'Deer herd observed in the grassland.'),
+(2, 1, 'Kaziranga Pass', '2025-05-16', 'Birds and small mammals noticed.'),
+(3, 4, 'Bandipur', '2025-05-17', 'Elephant calf seen with mother.'),
+(4, 3, 'Gir Forest', '2025-05-18', 'Lion roar heard in distance.'),
+(5, 2, 'Jim Corbett Pass', '2025-05-19', 'Tiger pugmarks found.'),
+(1, 1, 'Sundarbans', '2025-05-20', NULL),
+(2, 2, 'Kaziranga Pass', '2025-05-21', 'Rhino bathing in the lake.'),
+(3, 3, 'Bandipur', '2025-05-22', NULL),
+(4, 4, 'Gir Forest', '2025-05-23', 'Lioness with cubs spotted.'),
+(5, 5, 'Jim Corbett Pass', '2025-05-24', 'Barking deer seen at dusk.')
