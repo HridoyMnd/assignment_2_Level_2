@@ -95,3 +95,16 @@ INSERT INTO sightings (species_id, ranger_id, location, sighting_time, notes) VA
 (3, 3, 'Bandipur', '2025-05-22', NULL),
 (4, 4, 'Gir Forest', '2025-05-23', 'Lioness with cubs spotted.'),
 (5, 5, 'Jim Corbett Pass', '2025-05-24', 'Barking deer seen at dusk.')
+
+
+--update sighting_time
+UPDATE sightings
+SET sighting_time = 
+    CASE
+        WHEN sighting_id = 7 THEN '2025-05-08 12:30:00'
+        WHEN sighting_id = 8 THEN '2025-05-21 03:30:00'
+        WHEN sighting_id = 11 THEN '2025-05-10 18:45:00'
+        WHEN sighting_id = 12 THEN '2025-05-14 19:45:00'
+        ELSE sighting_time
+    END
+WHERE sighting_id IN (7, 8, 11, 12); 
