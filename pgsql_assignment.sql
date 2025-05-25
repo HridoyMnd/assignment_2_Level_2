@@ -125,3 +125,12 @@ SELECT common_name, count(*) AS sight_count FROM species
 -- Problem_3 solution
 SELECT * FROM sightings
     WHERE location LIKE '%Pass%'
+
+
+-- Problem 4 solution
+SELECT ranger_name, count(*) as sight_count
+    FROM rangers
+    INNER JOIN sightings
+    ON rangers.ranger_id = sightings.ranger_id  
+    GROUP BY ranger_name 
+
