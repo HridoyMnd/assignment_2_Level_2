@@ -148,3 +148,8 @@ SELECT common_name, sighting_time FROM sightings
     ON sightings.species_id = species.species_id
     ORDER BY sighting_time DESC
     LIMIT 2
+
+--  Problem_7 solution 
+UPDATE species
+    SET conservation_status = 'Historic'
+    WHERE discovery_date < '1800-01-01'
