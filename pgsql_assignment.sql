@@ -163,3 +163,7 @@ SELECT sighting_id, sighting_time,
     END as time_of_day
 
 FROM sightings 
+
+-- Problem_9 Solution
+DELETE FROM rangers 
+    WHERE ranger_id NOT IN (SELECT ranger_id FROM sightings)
