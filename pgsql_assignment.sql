@@ -113,3 +113,10 @@ WHERE sighting_id IN (7, 8, 11, 12);
 -- Problem_1 solution
 INSERT INTO rangers (ranger_name, ranger_region) VALUES
 ('Derek Fox', 'Coastal Plains')
+
+
+-- Problem_2 solution
+SELECT common_name, count(*) AS sight_count FROM species
+     INNER JOIN sightings ON
+     species.species_id = sightings.species_id
+    GROUP BY common_name
