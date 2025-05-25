@@ -153,3 +153,13 @@ SELECT common_name, sighting_time FROM sightings
 UPDATE species
     SET conservation_status = 'Historic'
     WHERE discovery_date < '1800-01-01'
+
+-- Problem 8 solution
+SELECT sighting_id, sighting_time,
+    CASE 
+        WHEN EXTRACT(HOUR FROM sighting_time) < 12 THEN 'Morning'  
+        WHEN EXTRACT(HOUR FROM sighting_time) BETWEEN 12 and 17 THEN 'Afternoon'  
+        ELSE  'Evening'
+    END as time_of_day
+
+FROM sightings 
