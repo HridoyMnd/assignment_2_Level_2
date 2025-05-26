@@ -5,7 +5,13 @@ CREATE TABLE rangers (
     ranger_id SERIAL PRIMARY KEY,
     ranger_name TEXT,
     ranger_region TEXT
-)
+);
+
+
+-- type change TEXT to VARCHAR
+ALTER TABLE rangers 
+ALTER COLUMN ranger_name TYPE VARCHAR (40),
+ALTER COLUMN ranger_region TYPE VARCHAR (50)
 
 
 -- Provided data insert into rangers
@@ -35,6 +41,12 @@ CREATE TABLE species (
     discovery_date DATE,
     conservation_status VARCHAR(50)
 );
+
+
+-- type change TEXT to VARCHAR
+ALTER TABLE species
+ALTER COLUMN common_name TYPE VARCHAR(40),
+ALTER COLUMN scientific_name TYPE VARCHAR(60)
 
 
 -- updata type date to timestamp
